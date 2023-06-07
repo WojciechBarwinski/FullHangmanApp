@@ -1,7 +1,7 @@
 package com.barwinski.FullHangmanApp.configurations;
 
 import com.barwinski.FullHangmanApp.utils.JwtUtils;
-import com.barwinski.FullHangmanApp.entities.UserService;
+import com.barwinski.FullHangmanApp.services.UserService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -43,7 +43,6 @@ public class JwtAthFilter extends OncePerRequestFilter {
         userName = jwtUtil.extractUsername(JWT);
 
         if (userName != null && SecurityContextHolder.getContext().getAuthentication() == null){
-            //UserDetails userDetails = userDao.findUserByName(userName);
             UserDetails userDetails = userService.findUserByName(userName);
 
             if (jwtUtil.isTokenValid(JWT, userDetails)){

@@ -11,8 +11,8 @@ import java.util.Collection;
 import java.util.Collections;
 
 @Entity
-@Builder
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "User")
@@ -20,6 +20,7 @@ public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Setter(AccessLevel.NONE)
     private Long id;
 
     private String name;
@@ -27,6 +28,7 @@ public class User implements UserDetails {
 
     @Enumerated(EnumType.STRING)
     private Role role;
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

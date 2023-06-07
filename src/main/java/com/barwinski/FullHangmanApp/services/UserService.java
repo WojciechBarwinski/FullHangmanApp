@@ -1,4 +1,4 @@
-package com.barwinski.FullHangmanApp.entities;
+package com.barwinski.FullHangmanApp.services;
 
 import com.barwinski.FullHangmanApp.entities.User;
 import com.barwinski.FullHangmanApp.repositories.UserRepository;
@@ -18,19 +18,17 @@ public class UserService {
 
     public UserDto createUser(UserDto userDto){
         if (userRepository.findByName(userDto.getName()).isEmpty()){
-            User save = userRepository.save(new User.UserBuilder()
+            User save = userRepository.save(User.builder()
                     .name(userDto.getName())
                     .password(passwordEncoder.encode(userDto.getPassword())).build());
+
             return new UserDto(save.getName(), save.getPassword());
         }
         return userDto;
     }
 
     public UserDetails findUserByName(String name){
-        return userRepository.findAll()
-                .stream()
-                .filter(u -> u.getName().equals(name))
-                .findFirst()
+        return userRepository.findByName(name)
                 .orElseThrow(() -> new UsernameNotFoundException("No user was found"));
 
     }

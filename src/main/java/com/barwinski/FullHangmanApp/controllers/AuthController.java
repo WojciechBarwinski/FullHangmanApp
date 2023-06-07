@@ -2,9 +2,8 @@ package com.barwinski.FullHangmanApp.controllers;
 
 
 import com.barwinski.FullHangmanApp.DTOs.UserDto;
-import com.barwinski.FullHangmanApp.entities.UserService;
+import com.barwinski.FullHangmanApp.services.UserService;
 import com.barwinski.FullHangmanApp.utils.JwtUtils;
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;

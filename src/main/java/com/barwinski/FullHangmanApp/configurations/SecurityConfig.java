@@ -1,6 +1,6 @@
 package com.barwinski.FullHangmanApp.configurations;
 
-import com.barwinski.FullHangmanApp.entities.UserService;
+import com.barwinski.FullHangmanApp.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 

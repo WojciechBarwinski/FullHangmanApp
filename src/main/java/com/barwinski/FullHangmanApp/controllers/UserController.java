@@ -2,7 +2,7 @@ package com.barwinski.FullHangmanApp.controllers;
 
 
 import com.barwinski.FullHangmanApp.DTOs.UserDto;
-import com.barwinski.FullHangmanApp.entities.UserService;
+import com.barwinski.FullHangmanApp.services.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

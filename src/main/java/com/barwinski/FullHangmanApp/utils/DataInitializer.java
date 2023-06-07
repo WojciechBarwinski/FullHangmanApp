@@ -1,5 +1,6 @@
 package com.barwinski.FullHangmanApp.utils;
 
+import com.barwinski.FullHangmanApp.entities.Role;
 import com.barwinski.FullHangmanApp.entities.User;
 import com.barwinski.FullHangmanApp.repositories.UserRepository;
 import org.springframework.context.ApplicationListener;
@@ -8,6 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @Component
@@ -28,9 +30,18 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
     }
 
     private List<User> createInitUsers(){
+        User admin = User.builder()
+                .name("admin")
+                .password(passwordEncoder.encode("1234"))
+                .role(Role.ADMIN)
+                .build();
+        User user = User.builder()
+                .name("user")
+                .password(passwordEncoder.encode("123"))
+                .role(Role.USER)
+                .build();
+
         return Arrays.asList(
-                new User("admin", passwordEncoder.encode("1234"), true, true, true, true),
-                new User("user", passwordEncoder.encode("123"),  true, true, true, true)
-        );
+                admin, user);
     }
 }
